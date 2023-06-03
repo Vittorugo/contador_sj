@@ -30,7 +30,7 @@
     </script>
 </head>
 <body>
-    <img src="bandeiras.jpg" alt="Imagem bandeiras">
+     <!-- <img src="bandeiras.jpg" alt="Imagem bandeiras"> -->
     <h1><span id="visitorCount"></span></h1>
 </body>
 </html>
