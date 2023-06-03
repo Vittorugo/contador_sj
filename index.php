@@ -5,57 +5,28 @@
     <title>Real-Time Visitor Count</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        var primeiroAcesso = true;
-        while(primeiroAcesso) {
-            $(document).ready(function() {
-                setInterval(fetchData, 500); // Fetch data every 1 minut
+        $(document).ready(function() {
+            setInterval(fetchData, 60000); // Fetch data every 1 minut
 
-                function fetchData() {
-                    $.ajax({
-                        url: 'fetch_data.php', // Path to your server-side script
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.success) {
-                                var lastValue = response.data;
-                                $('#visitorCount').text(lastValue);
-                            } else {
-                                console.log(response.error);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.log(error);
+            function fetchData() {
+                $.ajax({
+                    url: 'fetch_data.php', // Path to your server-side script
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            var lastValue = response.data;
+                            $('#visitorCount').text(lastValue);
+                        } else {
+                            console.log(response.error);
                         }
-                    });
-                    primeiroAcesso = false;
-                }
-            });
-        } 
-        
-        if(!primeiroAcesso) {
-            $(document).ready(function() {
-                setInterval(fetchData, 60000); // Fetch data every 1 minut
-
-                function fetchData() {
-                    $.ajax({
-                        url: 'fetch_data.php', // Path to your server-side script
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.success) {
-                                var lastValue = response.data;
-                                $('#visitorCount').text(lastValue);
-                            } else {
-                                console.log(response.error);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.log(error);
-                        }
-                    });
-                }
-            });
-        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
     </script>
 </head>
 <body>
