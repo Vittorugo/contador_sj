@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            setInterval(fetchData, 500); // Fetch data every 0.5 seconds
+            setInterval(fetchData, 180000); // Fetch data every 1 minut
 
             function fetchData() {
                 $.ajax({
