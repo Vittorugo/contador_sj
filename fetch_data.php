@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$password = 'root';
-$database = 'db_contador';
+$host = 'us-cdbr-east-06.cleardb.net';
+$username = 'bf3f5d1329f918';
+$password = 'b8ec9dc4';
+$database = 'heroku_d1d7704575f9de7';
 
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
@@ -14,7 +14,7 @@ $query = 'SELECT
             ifnull(portaria5, 0) + ifnull(portaria6, 0) + ifnull(portaria7, 0) + ifnull(portaria8, 0) + 
             ifnull(portaria9, 0) as quantidade_pessoas
             FROM
-            db_contador.tb_contador ORDER BY id DESC LIMIT 1';
+            heroku_d1d7704575f9de7.tb_contador ORDER BY id DESC LIMIT 1';
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
