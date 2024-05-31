@@ -1,24 +1,19 @@
 <?php
-$host = 'us-cdbr-east-06.cleardb.net';
-$username = 'bf3f5d1329f918';
-$password = 'b8ec9dc4';
-$database = 'heroku_d1d7704575f9de7';
+$host = 'lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$username = 'c9a6m6j3v8f2hla5';
+$password = 'm57wrm41bvjpaqky';
+$database = 'sd7h2o8wbwx5x5lt';
 
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
 
-$query = 'SELECT
-            ifnull(portaria1, 0) + ifnull(portaria2, 0) + ifnull(portaria3, 0) + ifnull(portaria4, 0) + 
-            ifnull(portaria5, 0) + ifnull(portaria6, 0) + ifnull(portaria7, 0) + ifnull(portaria8, 0) + 
-            ifnull(portaria9, 0) as quantidade_pessoas
-            FROM
-            heroku_d1d7704575f9de7.tb_contador ORDER BY id DESC LIMIT 1';
+$query = 'SELECT quantidadeTotal from sd7h2o8wbwx5x5lt.jawsdbcontador order by quantidadeTotal desc LIMIT 1';
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $lastValue = $row['quantidade_pessoas'];
+    $lastValue = $row['quantidadeTotal'];
 
     echo json_encode(['success' => true, 'data' => $lastValue]);
 } else {
